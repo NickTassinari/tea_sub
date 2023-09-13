@@ -7,7 +7,7 @@ module Api
         subscriptions = customer.subscriptions
         render json: subscriptions
       end
-      
+
       def create 
         subscription = Subscription.new(subscription_params)
         if subscription.save 
@@ -17,9 +17,9 @@ module Api
         end
       end
 
-      def cancel 
+      def destroy 
         subscription = Subscription.find(params[:id])
-        subscription.update(deactivated: true)
+        subscription.update(status: "deactivated")
       end
 
       private 
