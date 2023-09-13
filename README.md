@@ -122,7 +122,7 @@ This is a Back End Rest API project modeled after a take home project from an in
   add_foreign_key "subscriptions", "customers"
   add_foreign_key "subscriptions", "teas"
 ```
-
+ 
 
 ## Author
 
