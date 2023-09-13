@@ -24,5 +24,7 @@ RSpec.describe "Create Subscriptions API" do
     expect(subscription["price"]).to eq(19.99)
     expect(subscription["status"]).to eq("active")
     expect(subscription["frequency"]).to eq("monthly")
+    expect(subscription["customer_id"]).to eq(customer_1.id)
+    expect(subscription["tea_id"]).to eq(tea_1.id)
   end
 end
