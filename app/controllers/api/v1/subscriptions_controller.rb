@@ -19,8 +19,13 @@ module Api
 
       def update 
         subscription = Subscription.find(params[:id])
-        subscription.update(status: "deactivated")
-        render json: SubscriptionSerializer.new(subscription)
+        if subscription.status == "active"
+          subscription.update(status: "deactivated")
+          render json: SubscriptionSerializer.new(subscription)
+        else  
+          subscription.update(status: "active")
+          render json: SubscriptionSerializer.new(subscription)
+        end
       end
 
       private 
