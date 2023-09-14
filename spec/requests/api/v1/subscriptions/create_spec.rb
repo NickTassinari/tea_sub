@@ -20,11 +20,14 @@ RSpec.describe "Create Subscriptions API" do
     expect(response).to have_http_status(201)
 
     subscription = JSON.parse(response.body)
-    expect(subscription["title"]).to eq("Tea o the Month")
-    expect(subscription["price"]).to eq(19.99)
-    expect(subscription["status"]).to eq("active")
-    expect(subscription["frequency"]).to eq("monthly")
-    expect(subscription["customer_id"]).to eq(customer_1.id)
-    expect(subscription["tea_id"]).to eq(tea_1.id)
+    require 'pry'; binding.pry
+    expect(subscription).to have_key("data")
+    expect(subscription["data"]).to have_key("attributes")
+    expect(subscription["data"]["attributes"]["title"]).to eq("Tea o the Month")
+    expect(subscription["data"]["attributes"]["price"]).to eq(19.99)
+    expect(subscription["data"]["attributes"]["status"]).to eq("active")
+    expect(subscription["data"]["attributes"]["frequency"]).to eq("monthly")
+    expect(subscription["data"]["attributes"]["customer_id"]).to eq(customer_1.id)
+    expect(subscription["data"]["attributes"]["tea_id"]).to eq(tea_1.id)
   end
 end
