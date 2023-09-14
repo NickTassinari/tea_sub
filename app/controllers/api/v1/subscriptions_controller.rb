@@ -17,7 +17,7 @@ module Api
         end
       end
 
-      def destroy 
+      def update 
         subscription = Subscription.find(params[:id])
         subscription.update(status: "deactivated")
       end

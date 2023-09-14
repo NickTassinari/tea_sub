@@ -13,7 +13,7 @@ RSpec.describe "Cancel Subscriptions API" do
         customer_id: customer_1.id, 
         tea_id: tea_1.id)
     
-    delete "/api/v1/customers/#{customer_1.id}/subscriptions/#{subscription_1.id}"
+    patch "/api/v1/customers/#{customer_1.id}/subscriptions/#{subscription_1.id}"
     
     expect(response).to have_http_status(204)
 
