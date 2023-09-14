@@ -50,36 +50,79 @@ This is a Back End Rest API project modeled after a take home project from an in
           }
         }
 
+        This should return with a 201 Created status and the following JSON object
+        {
+          "data": {
+              "id": "3",
+              "type": "subscription",
+              "attributes": {
+                  "frequency": "monthly",
+                  "status": "active",
+                  "title": "Tea Club",
+                  "price": 19.99,
+                  "customer_id": 1,
+                  "tea_id": 1,
+                  "created_at": "2023-09-14T20:41:42.936Z",
+                  "updated_at": "2023-09-14T20:41:42.936Z"
+              }
+          }
+        }
+
         
       GET "api/v1/customers/:customer_id/subscriptions" 
         - this will list all subscriptions active and inactive belonging to the identified customer. The response should look like this
-      [
-      {
-          "id": 1,
-          "title": "Tea o the Month",
-          "price": 19.99,
-          "status": "active",
-          "frequency": "monthly",
-          "customer_id": 1,
-          "created_at": "2023-09-13T17:32:21.887Z",
-          "updated_at": "2023-09-13T17:32:21.887Z",
-          "tea_id": 1
-      },
-      {
-          "id": 2,
-          "title": "More Tea",
-          "price": 4.0,
-          "status": "deactivated",
-          "frequency": "monthly",
-          "customer_id": 1,
-          "created_at": "2023-09-13T17:32:21.893Z",
-          "updated_at": "2023-09-13T17:32:21.893Z",
-          "tea_id": 1
-      }
-      ]
+        {
+          "data": [
+              {
+                  "id": "1",
+                  "type": "subscription",
+                  "attributes": {
+                      "frequency": "monthly",
+                      "status": "active",
+                      "title": "Tea o the Month",
+                      "price": 19.99,
+                      "customer_id": 1,
+                      "tea_id": 1,
+                      "created_at": "2023-09-14T20:42:15.514Z",
+                      "updated_at": "2023-09-14T20:42:15.514Z"
+                  }
+              },
+              {
+                  "id": "2",
+                  "type": "subscription",
+                  "attributes": {
+                      "frequency": "monthly",
+                      "status": "deactivated",
+                      "title": "More Tea",
+                      "price": 4.0,
+                      "customer_id": 1,
+                      "tea_id": 1,
+                      "created_at": "2023-09-14T20:42:15.516Z",
+                      "updated_at": "2023-09-14T20:42:15.516Z"
+                  }
+              }
+            ]
+        }
 
-      DELETE "/api/v1/customers/#{customer_1.id}/subscriptions/#{subscription_1.id}"
+      PATCH "/api/v1/customers/#{customer_1.id}/subscriptions/#{subscription_1.id}"
         The response should be a 204 status and the subscription will have it's status changed from "active" to "deactivated".
+
+        {
+          "data": {
+              "id": "1",
+              "type": "subscription",
+              "attributes": {
+                  "frequency": "monthly",
+                  "status": "deactivated",
+                  "title": "Tea o the Month",
+                  "price": 19.99,
+                  "customer_id": 1,
+                  "tea_id": 1,
+                  "created_at": "2023-09-14T20:41:26.477Z",
+                  "updated_at": "2023-09-14T20:42:00.355Z"
+              }
+          }
+        }
 
 
 
