@@ -15,7 +15,7 @@ RSpec.describe "Cancel Subscriptions API" do
     
     patch "/api/v1/customers/#{customer_1.id}/subscriptions/#{subscription_1.id}"
     
-    expect(response).to have_http_status(204)
+    expect(response).to have_http_status(200)
 
     subscription_1.reload
     
